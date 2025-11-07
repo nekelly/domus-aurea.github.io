@@ -6,12 +6,12 @@ title: Fr. Thomas Le Gal
 name_pronunciation: ''
 
 # Full name (for SEO)
-first_name: Alex
-last_name: Johnson
+first_name: Thomas
+last_name: LeGal
 
 # Status emoji
 status:
-  icon: 🚀
+  icon:
 
 # Is this the primary user of the site?
 superuser: true
@@ -20,7 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Catholic Priest
+role: Catholic Priest (semper idem)
 
 interests:
   - Saving souls
