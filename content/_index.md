@@ -25,6 +25,8 @@ sections:
     design:
       # Apply a gradient background
       css_class: hbx-bg-gradient
+      css_style: |
+        h1 { font-size: 1.5rem !important; }
       # Avatar customization
       avatar:
         size: medium # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
@@ -44,7 +46,7 @@ sections:
   - block: collection
     id: papers
     content:
-      title: Featured Publicationssss
+      title: Featured Publications
       filters:
         folders:
           - publications

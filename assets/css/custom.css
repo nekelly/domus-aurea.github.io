@@ -1,0 +1,8 @@
+/* Custom styles for Domus Aurea */
+
+/* Make the name smaller on the biography block */
+.resume-biography h1,
+.hbx-biography h1,
+section h1.text-4xl {
+  font-size: 1.5rem !important;
+}
