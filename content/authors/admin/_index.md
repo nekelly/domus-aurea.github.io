@@ -8,6 +8,7 @@ name_pronunciation: ''
 # Full name (for SEO)
 first_name: Thomas
 last_name: LeGal
+occupation: Catholic priest
 
 # Status emoji
 status:
@@ -23,8 +24,6 @@ highlight_name: true
 role: Catholic Priest (semper idem)
 
 interests:
-  - Saving souls
-  - Praying
 
 education:
   - area: PhD Computer Science (AI Focus)
@@ -37,24 +36,6 @@ education:
     button:
       text: 'Read Thesis'
       url: 'https://example.com/thesis.pdf'
-  - area: MS Computer Science
-    institution: Carnegie Mellon University
-    icon: ""
-    date_start: 2013-09-01
-    date_end: 2015-05-31
-    summary: |
-      GPA: 4.0/4.0
-
-      Specialized in machine learning and robotics.
-  - area: BS Computer Science
-    institution: MIT
-    icon: ""
-    date_start: 2009-09-01
-    date_end: 2013-05-31
-    summary: |
-      GPA: 3.9/4.0
-
-      Minored in Mathematics. President of AI Club.
 
 work:
   - position: Senior AI Research Scientist
@@ -109,8 +90,8 @@ skills:
         icon: book-open
 
 languages:
-  - name: English
-    percent: 100
+  - name: French
+    percent: 50
   - name: Spanish
     percent: 50
 
@@ -142,4 +123,10 @@ awards:
       Recognized for contributions to scaling laws in deep learning.
 ---
 
-Alex Johnson is a Senior AI Research Scientist at Meta AI, where he leads groundbreaking work on large language models and multimodal systems. His research has been published in top conferences like NeurIPS and ICML, with over 10,000 citations. Alex is passionate about pushing the boundaries of AI while ensuring ethical development. Outside of work, he enjoys hiking in the Rockies, building custom PCs, and mentoring the next generation of AI talent.
+Site abbé Thomas Le Gal: https://www.janua-caeli.fr/
+
+Oculi omnium sperant in Te Domine!
+Les yeux de tous espèrent en Vous Seigneur!
+
+Servus Mariae numquam peribit.
+Un Serviteur de Marie ne périra jamais.
