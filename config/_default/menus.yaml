@@ -22,9 +22,9 @@ main:
 #  - name: Projects
 #    url: projects/
 #    weight: 30
-  - name: Publications
-    url: publications/
-    weight: 35
+#  - name: Publications
+#    url: publications/
+#    weight: 35
   - name: Videos
     url: videos/
     weight: 36

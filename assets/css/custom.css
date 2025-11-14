@@ -6,3 +6,20 @@
 section h1.text-4xl {
   font-size: 1.5rem !important;
 }
+
+/* Style the site title/logo link in the header */
+.navbar-brand,
+.navbar-brand a,
+header .navbar .navbar-brand {
+  background-color: #FFD700;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  color: #1a1a1a !important;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-brand:hover,
+.navbar-brand a:hover {
+  background-color: #FFC700;
+}
