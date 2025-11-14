@@ -31,6 +31,12 @@ main:
   - name: Gallery
     url: gallery/
     weight: 37
+  - name: Contact
+    url: contact/
+    weight: 38
+  - name: Donations
+    url: donations/
+    weight: 39
   #- name: Courses
   #  url: courses/
   #  weight: 40
