@@ -1,6 +1,8 @@
 ---
 title: Donations
 type: page
+show_related: false
+pager: false
 ---
 
 ## Support Our Mission

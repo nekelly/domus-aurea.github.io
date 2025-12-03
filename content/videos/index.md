@@ -1,9 +1,12 @@
 ---
-title: Videos
+title: YouTube Channel Videos
 type: page
+reading_time: false
+show_related: false
+pager: false
 ---
 
-Visit [Thomas LE GAL YouTube channel](https://www.youtube.com/@thomaslegal7713)
+Visit: [**Thomas LE GAL YouTube channel**](https://www.youtube.com/@thomaslegal7713)
 
 ## 2021
 

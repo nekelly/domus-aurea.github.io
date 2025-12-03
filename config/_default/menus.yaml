@@ -7,36 +7,24 @@ main:
   - name: Bio
     url: /
     weight: 10
-#  - name: Papers
-#    url: /#papers
-#    weight: 11
-#  - name: Talks
-#    url: /#talks
-#    weight: 12
-#  - name: News
-#  url: /#news
-#  weight: 13
-#  - name: Experience
-#    url: experience/
-#    weight: 20
-#  - name: Projects
-#    url: projects/
-#    weight: 30
-#  - name: Publications
-#    url: publications/
-#    weight: 35
   - name: Videos
     url: videos/
     weight: 36
   - name: Gallery
     url: gallery/
     weight: 37
+  - name: Links
+    url: links/
+    weight: 38
+  - name: Books
+    url: books/
+    weight: 39
+  - name: Prayers
+    url: prayers/
+    weight: 40
   - name: Contact
     url: contact/
-    weight: 38
+    weight: 41
   - name: Donations
     url: donations/
-    weight: 39
-  #- name: Courses
-  #  url: courses/
-  #  weight: 40
+    weight: 42

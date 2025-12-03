@@ -16,7 +16,7 @@ sections:
       text: ''
       # Show a call-to-action button under your biography? (optional)
       headings:
-        about: ''
+        about: 'Welcome to Domus Aurea!'
         education: ''
         interests: ''
     design:
@@ -29,3 +29,5 @@ sections:
         size: medium # Options: small (150px), medium (200px, default), large (320px), xl (400px), xxl (500px)
         shape: circle # Options: circle (default), square, rounded
 ---
+
+# Welcome to Domus Aurea!
