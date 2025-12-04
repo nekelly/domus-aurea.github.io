@@ -1,6 +1,7 @@
 ---
 title: Donations
 type: page
+reading_time: false
 show_related: false
 pager: false
 ---

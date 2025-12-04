@@ -56,10 +56,30 @@ pager: false
 .lightbox-close:hover {
   color: #ccc;
 }
+
+/* Override negative margin on section titles and reduce bottom spacing */
+.prose p.text-xl.mb-2 {
+  margin-top: 2rem !important;
+  margin-bottom: 0.5rem !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-weight: 600;
+}
+
+/* First section title should have less top margin */
+.prose p.text-xl.mb-2:first-of-type {
+  margin-top: 0 !important;
+}
+
+/* Ensure divs following p tags have no top margin */
+.prose p.text-xl + div {
+  margin-top: 0 !important;
+}
 </style>
 
-<p class="text-lg text-gray-600 dark:text-gray-400 mb-8" style="margin-top: -3rem">(Hover over the book thumbnail to see a full-sized image)</p>
 
+<p class="text-xl mb-2">Catechisms and Theology</p>
 <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mb-8">
   <div class="book-item" onclick="openLightbox('/books/baltimore.jpg')">
     <img src="/books/baltimore.jpg" alt="Book Title 1" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -70,9 +90,10 @@ pager: false
   <div class="book-item" onclick="openLightbox('/books/liberalism_sin.jpg')">
     <img src="/books/liberalism_sin.jpg" alt="Book Title 3" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
   </div>
-  <div class="book-item" onclick="openLightbox('/books/raccolta.jpg')">
-    <img src="/books/raccolta.jpg" alt="Book Title 4" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-  </div>
+</div>
+
+<p class="text-xl mb-2">Sedevacantism</p>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mb-8">
   <div class="book-item" onclick="openLightbox('/books/work_hands.jpg')">
     <img src="/books/work_hands.jpg" alt="Book Title 5" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
   </div>
@@ -82,6 +103,10 @@ pager: false
   <div class="book-item" onclick="openLightbox('/books/robber_church.webp')">
     <img src="/books/robber_church.webp" alt="Book Title 7" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
   </div>
+</div>
+
+<p class="text-xl mb-2">Spirituality and Prayer</p>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 mb-8">
   <div class="book-item" onclick="openLightbox('/books/garrigou1.jpg')">
     <img src="/books/garrigou1.jpg" alt="Book Title 8" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
   </div>
@@ -90,6 +115,9 @@ pager: false
   </div>
   <div class="book-item" onclick="openLightbox('/books/true_devotion.jpg')">
     <img src="/books/true_devotion.jpg" alt="Book Title 10" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+  </div>
+  <div class="book-item" onclick="openLightbox('/books/raccolta.jpg')">
+    <img src="/books/raccolta.jpg" alt="Book Title 4" class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
   </div>
 </div>
 

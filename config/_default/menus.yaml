@@ -4,9 +4,12 @@
   #   The weight parameter defines the order that the links will appear in.
 
 main:
-  - name: Bio
+  - name: Home
     url: /
     weight: 10
+  - name: Blog
+    url: blog/
+    weight: 35
   - name: Videos
     url: videos/
     weight: 36
@@ -25,6 +28,9 @@ main:
   - name: Contact
     url: contact/
     weight: 41
+  - name: Catholic Life
+    url: catholic_life/
+    weight: 42
   - name: Donations
     url: donations/
-    weight: 42
+    weight: 43
