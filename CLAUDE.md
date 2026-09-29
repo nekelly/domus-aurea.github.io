@@ -2,113 +2,142 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## What This Is
 
-This is a **Hugo Blox** academic CV website (domus-aurea.ie) built with the Academic CV template. It uses Hugo as the static site generator, with Tailwind CSS v4 for styling and Preact for interactive components. The site is deployed to GitHub Pages via GitHub Actions.
+A static website for [Domus Aurea](https://domus-aurea.ie/) built with [Hugo](https://gohugo.io/) using the [HugoBlox Academic CV theme](https://hugoblox.com/). It deploys to GitHub Pages via a CI workflow and is also configured for Netlify deployment.
 
 ## Key Technologies
 
-- **Hugo Extended v0.152.2** - Static site generator (requires extended version for SCSS/SASS)
-- **Hugo Blox Builder** - Academic template framework with modular blocks
-- **Go v1.19+** - Required for Hugo modules
-- **Tailwind CSS v4** - Styling framework
-- **Preact** - Lightweight React alternative for interactive components
-- **pnpm v10.14.0** - Package manager
+- **Hugo Extended 0.152.x** — static site generator (extended build required for SCSS/Tailwind)
+- **Hugo Blox Builder** — Academic CV template framework with modular blocks
+- **Go 1.19+** — required for Hugo modules
+- **Tailwind CSS v4** — styling framework
+- **Preact** — lightweight interactive components
+- **pnpm 10.14.0** — package manager (declared in `package.json`)
+- **Dart Sass** — required by the build
 
 ## Development Commands
 
-### Local Development
 ```bash
-# Install dependencies (first time setup)
+# Install dependencies (uses pnpm)
 pnpm install
 
-# Run local development server
-pnpm dev
-# Equivalent to: hugo server --disableFastRender
-
-# Build for production
-pnpm build
-# Equivalent to: hugo --minify
-```
-
-### Hugo Commands
-```bash
-# Start Hugo server (with fast render disabled for complete rebuilds)
+# Local dev server with live reload — serves at http://localhost:1313
 hugo server --disableFastRender
+# or
+pnpm dev
 
-# Build with minification
-hugo --minify
+# Include draft posts (date in future or draft: true in frontmatter)
+hugo server --disableFastRender --buildDrafts --buildFuture
 
-# Build with garbage collection and base URL
-hugo --gc --minify --baseURL "https://domus-aurea.ie/"
+# Production build
+hugo --gc --minify
+# or
+pnpm build   # hugo --minify
 ```
+
+`--disableFastRender` is used in dev because Hugo's fast render can miss some updates.
 
 ## Architecture
 
-### Hugo Modules System
-The site uses **Hugo Modules** (not npm/node modules) for theme management via `go.mod`. Two key modules are imported:
-- `blox-plugin-netlify` - Netlify deployment integration
-- `blox-tailwind` - Tailwind CSS integration
+This is a Hugo static site — no backend, no database, no API. All content is Markdown with YAML frontmatter.
 
-Module configuration in `config/_default/module.yaml` mounts custom blocks from `hugo-blox/blox/` directories.
+**Config layer** (`config/_default/`):
+- `hugo.yaml` — site-wide Hugo settings, baseURL, taxonomies, output formats, markup
+- `params.yaml` — theme appearance (light/indigo), navbar, footer, SEO
+- `languages.yaml` — multi-language configuration
+- `menus.yaml` — navigation links (order controlled by `weight`)
+- `module.yaml` — Hugo module imports (HugoBlox Netlify plugin + Tailwind) and mount points for custom blox layouts
 
-### Configuration Structure
-Hugo Blox uses a split configuration system in `config/_default/`:
-- `hugo.yaml` - Core Hugo settings (site title, baseURL, taxonomies, markup)
-- `params.yaml` - Site-specific parameters (appearance, SEO, header, footer)
-- `languages.yaml` - Multi-language configuration
-- `menus.yaml` - Navigation menu structure
-- `module.yaml` - Hugo module imports and mounts
+Theme management uses **Hugo Modules** via `go.mod` (not npm), importing `blox-plugin-netlify` and `blox-tailwind`. `module.yaml` mounts custom blocks from `hugo-blox/blox/` into `layouts/_partials/blox/`.
 
-### Content Organization
-Content is in `content/` with standard Hugo sections:
-- `_index.md` - Homepage with Hugo Blox blocks/widgets
-- `authors/` - Author profiles
-- `blog/` - Blog posts
-- `courses/` - Course materials and guides
-- `events/` - Event listings
-- `experience.md` - Professional experience
-- `projects/` - Project showcases
-- `publications/` - Academic publications
+**Content** (`content/`): Each section is a directory with an `index.md`. The homepage (`_index.md`) uses `type: landing` with HugoBlox `sections` blocks. Author profile pages are suppressed from rendering (`content/authors/_index.md` sets `render: never`).
 
-### Hugo Blox Blocks System
-The homepage (`content/_index.md`) uses Hugo Blox's block/widget system. Each section is a YAML block definition with parameters like `block`, `content`, `design`, etc. Custom blocks can be added to `layouts/_partials/blox/`.
+Current sections: `blog/`, `books/`, `catholic_life/`, `contact/`, `donations/`, `gallery/`, `links/`, `prayers/`, `videos/`.
 
-### Asset Pipeline
-- Custom layouts: `layouts/` (currently only `layouts/partials/`)
-- Assets: `assets/` for custom CSS, JS, images
-- Static files: `static/` for files served as-is
-- Tailwind CLI processes styles during build
+**Customization**:
+- `assets/css/custom.css` — site-specific style overrides (Tailwind CSS v4 is the base framework)
+- `layouts/partials/hooks/head-end/github-button.html` — injects the GitHub buttons script into `<head>`; this is a HugoBlox hook point
 
-## GitHub Pages Deployment
+**Deployment**:
+- GitHub Pages: `.github/workflows/hugo.yml` builds on push to `main`. Versions are pinned in the workflow env block: Hugo 0.152.2 (extended), Go 1.25.3, Node.js 22.20.0, Dart Sass 1.93.2. Build uses `--gc --minify` with a Hugo cache, then uploads a Pages artifact.
+- Netlify: `netlify.toml` runs `pnpm install` then `hugo --gc --minify -b $URL`, followed by `pnpm dlx pagefind` for search indexing. Its own pinned versions (Hugo 0.152.1, Go 1.21.5, Node 22) are set in `[build.environment]` and drift from the GitHub Actions ones — update both when bumping.
 
-The site automatically deploys via `.github/workflows/hugo.yml` on push to `main` branch:
+## Content Types and How to Edit Them
 
-1. **Build environment setup**: Installs Dart Sass, Go, Hugo Extended, Node.js
-2. **Dependency installation**: Runs `npm ci` for package-lock.json
-3. **Hugo build**: Builds with `--gc --minify` and Hugo cache
-4. **Pages deployment**: Uploads to GitHub Pages with artifact upload
+### Blog Posts
 
-**Important versions** (defined in workflow):
-- Hugo: 0.152.2 (extended)
-- Go: 1.25.3
-- Node.js: 22.20.0
-- Dart Sass: 1.93.2
+Blog posts live under `content/blog/<post-slug>/index.md`. Each post is a directory (page bundle) so it can include its own images.
 
-## Important Notes
+Minimal frontmatter:
+```yaml
+---
+title: My Post Title
+date: 2025-01-15
+summary: One-sentence description shown in listings.
+tags:
+  - SomeTag
+---
+```
 
-- Always use **Hugo Extended** - required for SCSS/Tailwind processing
-- Use **pnpm** as package manager (specified in package.json)
-- Git must be configured with `core.quotepath false` for proper Unicode handling
-- Hugo modules require Go to be installed
-- The site uses `disableFastRender` in dev for complete rebuilds (Hugo's fast render can miss some updates)
-- Content files use YAML frontmatter with Hugo Blox's block syntax
-- The workflow caches Hugo build artifacts to speed up deployment
+To show a featured image in the blog grid, place a `featured.jpg` or `featured.png` in the post's directory. The blog listing page (`content/blog/_index.md`) uses `view: article-grid`.
 
-## Customization Areas
+HugoBlox callout syntax works in blog post bodies:
+```markdown
+> [!NOTE]
+> This is a note callout.
 
-- **Theme/Colors**: Modify `params.yaml` appearance section
-- **Navigation**: Edit `menus.yaml`
-- **SEO**: Update marketing section in `params.yaml`
-- **Custom blocks**: Add HTML to `layouts/_partials/blox/`
-- **Styling**: Add custom Tailwind classes or CSS to `assets/`
+> [!TIP]+ Collapsible tip
+> Content here.
+```
+
+### Simple Pages (Links, Contact, Donations, Catholic Life, etc.)
+
+These use `type: page` in the frontmatter and suppress metadata noise with:
+```yaml
+reading_time: false
+show_related: false
+pager: false
+```
+
+Body is plain Markdown. Inline `<style>` blocks are used on some pages (e.g. Prayers, Books, Gallery) since HugoBlox renders `unsafe: true` — raw HTML and `<script>` tags are allowed in content files.
+
+### Videos Page
+
+Uses the built-in Hugo YouTube shortcode:
+```markdown
+{{< youtube VIDEO_ID >}}
+```
+
+### Books Page
+
+Uses inline HTML with Tailwind utility classes to render a responsive image grid with a JavaScript lightbox. Cover images live in `content/books/` and are referenced as absolute paths (`/books/<file>`), since the page bundle is served from `/books/`.
+
+### Gallery Page
+
+Uses a raw HTML CSS grid in the content body. Images are currently placeholder URLs (`picsum.photos`); replace them with paths to actual images placed in `content/gallery/` or `static/`.
+
+### Homepage (`content/_index.md`)
+
+Uses `type: landing` with a `sections:` list of HugoBlox blocks. The current block is `resume-biography-3`, which pulls from the `admin` author profile. Add more sections by appending block entries — no template editing needed. Available blocks are documented at [https://hugoblox.com/blocks/](https://hugoblox.com/blocks/).
+
+## Adding a New Section
+
+1. Create `content/<section-name>/index.md` with appropriate frontmatter
+2. Add a menu entry in `config/_default/menus.yaml`:
+   ```yaml
+   - name: My Section
+     url: my-section/
+     weight: 50   # controls nav order; existing items range from 10–43
+   ```
+
+## Customizing Styles
+
+All custom CSS goes in `assets/css/custom.css`. The base framework is Tailwind CSS v4 so utility classes are available in content HTML. For scoped page styles, inline `<style>` blocks inside `index.md` content files work fine (unsafe HTML is enabled globally).
+
+## Other Notes
+
+- Always use **Hugo Extended** — the standard build cannot process SCSS/Tailwind.
+- Hugo modules require Go to be installed locally.
+- Configure git with `core.quotepath false` for proper Unicode handling in filenames.
+- Custom blocks go in `layouts/_partials/blox/`; HugoBlox hooks in `layouts/partials/hooks/`.
