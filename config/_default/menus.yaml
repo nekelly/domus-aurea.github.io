@@ -31,6 +31,3 @@ main:
   - name: Catholic Life
     url: catholic_life/
     weight: 42
-  - name: Donations
-    url: donations/
-    weight: 43
