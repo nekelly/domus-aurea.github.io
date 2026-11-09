@@ -6,6 +6,7 @@ show_related: false
 pager: false
 ---
 
-- ### Ember Days
-- ### Fasting and Abstinence
-- ### General Information
+- ### [Monthly Devotions](/monthly_devotions/)
+- ### [General Devotions](/general_devotions/)
+- ### [Ember Days](https://catholicgentleman.com/2022/12/ember-days-101/)
+- ### [Fasting and Abstinence](/fasting_and_abstinence/)
