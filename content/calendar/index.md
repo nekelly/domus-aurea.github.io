@@ -6,42 +6,6 @@ show_related: false
 pager: false
 ---
 
-### January
-
-- blank
-
-### February
-
-- blank
-
-### March
-
-- blank
-
-### April
-
-- blank
-
-### May
-
-- blank
-
-### June
-
-- blank
-
-### July
-
-- blank
-
-### August
-
-- blank
-
-### September
-
-- blank
-
 ### October (Month of the Holy Rosary)
 
 - 2 - Holy Guardian Angels
@@ -71,7 +35,3 @@ pager: false
 - 27 - Our Lady of the Miraculous Medal
 - 29 - 1st Sunday of Advent
 - 30 - St. Andrew, Apostle
-
-### December
-
-- blank
